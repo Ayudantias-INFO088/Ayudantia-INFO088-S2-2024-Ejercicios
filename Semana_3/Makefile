@@ -5,7 +5,7 @@ BINS=bin/prog
 
 all: clean $(BINS)
 
-bin/%: ejercicio1.cpp
+bin/%: ejercicio1_resuelto.cpp
 	$(CC) $(CFLAGS) -o $@ $<
 
 clean:
