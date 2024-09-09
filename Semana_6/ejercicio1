@@ -1,5 +1,5 @@
 /*
-    Ejercicio 4. Quicksort con mediana aproximada como pivote.
+    Ejercicio 1. Quicksort con mediana aproximada como pivote.
 
     Se entregan las funciones void mediana(int* Arr, const int n); y Quicksort
 
