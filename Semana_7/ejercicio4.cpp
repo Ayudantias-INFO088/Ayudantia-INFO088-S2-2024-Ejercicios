@@ -61,10 +61,10 @@ struct node{
 node* genList();
 
 // Funcion a codificar
-void setDirections(node *L);
+void setDirections(node &L);
 
 // Imprime la lista enlazada
-void printList(node* L);
+void printList(node *L);
 
 int main(){
 
@@ -73,7 +73,7 @@ int main(){
 }
 
 
-void setDirections(node *L){
+void setDirections(node &L){
     return;
 }
 
@@ -120,7 +120,7 @@ node* genList() {
     return n5;
 }
 
-void printList(node* L) {
+void printList(node *L) {
     node* row = L;
     node* col;
     while (row) {

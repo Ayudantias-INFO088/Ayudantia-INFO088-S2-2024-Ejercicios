@@ -20,13 +20,13 @@ typedef struct nodeList nodo;
 
 # define MAX 50
 
-void appendToListL(nodo **l, int num);
-void appendToListR(nodo **l, int num);
-void inserInList(nodo **l, int num);
-bool removeFromList(nodo **l, int num);
+void appendToListL(nodo *&l, int num);
+void appendToListR(nodo *&l, int num);
+void inserInList(nodo *&l, int num);
+bool removeFromList(nodo *&l, int num);
 void printList(nodo *l);
-void separa_pares_impares(nodo **l, nodo **pares, nodo **impares);
-void juntar_listas(nodo **pares, nodo **impares, nodo **l2);
+void separa_pares_impares(nodo *&l, nodo *&pares, nodo *&impares);
+void juntar_listas(nodo *&pares, nodo *&impares, nodo *&l2);
 
 int main(int argc, char **argv){
 	int i, x;
@@ -35,7 +35,7 @@ int main(int argc, char **argv){
 
 	for (i=1; i<=10; i++){
 		x = rand()%MAX;
-		inserInList(&miLista, x);	
+		inserInList(miLista, x);	
 	}
     printf("Lista = ");
 	printList(miLista);
@@ -45,21 +45,21 @@ int main(int argc, char **argv){
 	return EXIT_SUCCESS;
 }
 
-void separa_pares_impares(nodo **l, nodo **pares, nodo **impares) {
+void separa_pares_impares(nodo *&l, nodo *&pares, nodo *&impares) {
     return;
 }
 
-void juntar_listas(nodo **pares, nodo **impares, nodo **l2) {
+void juntar_listas(nodo *&pares, nodo *&impares, nodo *&l2) {
     return;
 }
 
-bool removeFromList(nodo **l, int num) {
-	if (*l == nullptr)
+bool removeFromList(nodo *&l, int num) {
+	if (l == nullptr)
 		return false;
 
-	nodo *p = *l;
+	nodo *p = l;
 	if (p->val == num){
-		*l = p->next;
+		l = p->next;
 		delete p;
 		return true;
 	}
@@ -77,22 +77,22 @@ bool removeFromList(nodo **l, int num) {
 	return false;
 }
 
-void appendToListL(nodo **l, int num) {
+void appendToListL(nodo *&l, int num) {
 	nodo *nuevo = new nodo;
 	nuevo->val = num;
-	nuevo->next = *l;
-	*l = nuevo;
+	nuevo->next = l;
+	l = nuevo;
 }
 
-void appendToListR(nodo **l, int num) {
+void appendToListR(nodo *&l, int num) {
 	nodo *nuevo = new nodo;
 	nuevo->val = num;
 	nuevo->next = NULL;
 
-	if (*l == nullptr)
-		*l = nuevo;
+	if (l == nullptr)
+		l = nuevo;
 	else{
-		nodo *p = *l;
+		nodo *p = l;
 		while(p->next != nullptr)
             p = p->next;
 
@@ -100,18 +100,18 @@ void appendToListR(nodo **l, int num) {
 	}
 }
 
-void inserInList(nodo **l, int num) {
+void inserInList(nodo *&l, int num) {
 	nodo *nuevo = new nodo;
 	nuevo->val = num;
 	nuevo->next = NULL;
 
-	if (*l == nullptr)
-		*l = nuevo;
+	if (l == nullptr)
+		l = nuevo;
 	else{
-		nodo *p = *l;
+		nodo *p = l;
 		if (num <= p->val){
 			nuevo->next = p;
-			*l = nuevo;
+			l = nuevo;
 		}else{
 			while(p->next != nullptr && p->next->val < num)
                 p=p->next;
