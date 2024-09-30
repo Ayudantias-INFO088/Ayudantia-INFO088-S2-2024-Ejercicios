@@ -31,22 +31,6 @@ int main(int argc, char **argv){
 		cout << "Error. Debe ejecutarse como ./problema n" << endl;
 		exit(EXIT_FAILURE);
 	}
-	Datos S;
-	S.n = atoi(argv[1]);
-	S.A = new int[S.n];
-	S.C = new int[S.n];
-
-	llenaEstructura(S);
-	imprimeEstructura(S);
-	nodo *L = NULL;
-	
-	creaLista(S, &L);
-	printList(L);
-
-	nodo *P = NULL;
-	cout << "Lista enlazada P con 1 o 0, si S.A[i] es o no primo" << endl;
-	datosRecursivos(S, &P);
-	printList(P);
 
 	cout << "Fin Control 1" << endl;
 	return EXIT_SUCCESS;
@@ -54,52 +38,25 @@ int main(int argc, char **argv){
 
 // devuelve la cantidad de dígitos de x
 int cantDigitos(int x){
-	int c=1;
-	while(x>=10){
-		x = x/10;
-		c++;		
-	}
 
-	return c;
 }
 
 // 2 Pts.
 void llenaEstructura(Datos S){
-	for (int i=0; i<S.n; i++){
-		S.A[i] = rand()%(max+1);
-		S.C[i] = cantDigitos(S.A[i]);
-	}
+
 }
 
 // 2 Pts.
 void creaLista(Datos S, nodo **l){
-	int i, j, x;
-	for (i=S.n-1; i>=0; i--){
-		x = S.A[i];
-		for (j=0; j<S.C[i]; j++){
-			appendToListR(l, x%10);
-			x = x/10;
-		}
-	}
+	
 }
 
 bool esPrimo(int num, int divisor){
-	if(divisor > num/2)
-		return true;
-	if(num%divisor == 0)
-		return false;
-	return esPrimo(num,divisor+1); 
+
 }
 
 void datosRecursivos(Datos S, nodo **L){
-// crea una lista enlazada con valores 1 o 0, dependiendo
-// si el A[i] es primo o no
-	for(int i = 0; i < S.n; i++){
-		if(esPrimo(S.A[i],2))
-			appendToListR(L,1);
-		else
-			appendToListR(L,0);
-	}
+
 }
 
 // aniade un nodo al inicio de la lista
